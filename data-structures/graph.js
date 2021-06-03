@@ -111,7 +111,11 @@ class Graph {
     }
     return results;
   }
-  // not working
+  ///////////////////////////////////////////////////////////////////////
+  //
+  // Dijkstra's Algorithm for finding the shortest distance between nodes below:
+  //
+  ////////////////////////////////////////////////////////////////////////
   path(start, end) {
     // setup three objects
     const results = [];
@@ -134,7 +138,7 @@ class Graph {
     let smallest;
     // while there is something to visit
     while (nodes.values.length) {
-      smallest = nodes.dequeue().node;
+      smallest = nodes.dequeue().val;
       if (smallest === end) {
         // console.log(distances);
         // console.log(previous);
@@ -165,19 +169,99 @@ class Graph {
   }
 }
 
+// simple priority queue
+// class PriorityQueue {
+//   constructor() {
+//     this.values = [];
+//   }
+//   enqueue(val, priority) {
+//     this.values.push({ val, priority });
+//     this.sort();
+//   }
+//   dequeue() {
+//     return this.values.shift();
+//   }
+//   sort() {
+//     this.values.sort((a, b) => a.priority - b.priority);
+//   }
+// }
+
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
 class PriorityQueue {
+  // minBinaryHeap
   constructor() {
     this.values = [];
   }
-  enqueue(node, priority) {
-    this.values.push({ node, priority });
-    this.sort();
+  enqueue(val, priority) {
+    var node = new Node(val, priority);
+
+    this.values.push(node);
+    if (this.values.length < 2) {
+      return this.values;
+    }
+    return this.bubble();
+  }
+  bubble(i = this.values.length - 1) {
+    var parent;
+    var sorted = false;
+    while (!sorted && i > 0) {
+      parent = Math.floor((i - 1) / 2);
+      if (this.values[parent].priority > this.values[i].priority) {
+        this.swap(parent, i);
+        i = parent;
+      } else {
+        sorted = true;
+      }
+    }
+    return this.values;
   }
   dequeue() {
-    return this.values.shift();
+    var minPriority = this.values[0];
+    if (this.values.length < 2) {
+      return this.values.pop();
+    }
+    this.values[0] = this.values.pop();
+    this.sink(0);
+    return minPriority;
   }
-  sort() {
-    this.values.sort((a, b) => a.priority - b.priority);
+  sink(i = 0) {
+    var child1;
+    var child2;
+    var length = this.values.length;
+    while (i < length) {
+      child1 = 2 * i + 1;
+      child2 = 2 * i + 2;
+      if (
+        (child1 >= length ||
+          this.values[child1].priority > this.values[i].priority) &&
+        (child2 >= length ||
+          this.values[child2].priority > this.values[i].priority)
+      ) {
+        return;
+      }
+
+      if (
+        child2 >= length ||
+        this.values[child1].priority < this.values[child2].priority
+      ) {
+        this.swap(i, child1);
+        i = child1;
+      } else {
+        this.swap(i, child2);
+        i = child2;
+      }
+    }
+  }
+  swap(a, b) {
+    var temp = this.values[a];
+    this.values[a] = this.values[b];
+    this.values[b] = temp;
   }
 }
 
@@ -220,4 +304,6 @@ graph.addEdge("e", "f", 1);
 //  \ 1/\3 /
 //   f---e
 //     1
+
+graph.path("a", "e");
 graph.dfsIterative("a");

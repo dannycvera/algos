@@ -8,59 +8,59 @@ class Node {
 class PriorityQueue {
   // minBinaryHeap
   constructor() {
-    this.value = [];
+    this.values = [];
   }
   enqueue(val, priority) {
     var node = new Node(val, priority);
 
-    this.value.push(node);
-    if (this.value.length < 2) {
-      return this.value;
+    this.values.push(node);
+    if (this.values.length < 2) {
+      return this.values;
     }
     return this.bubble();
   }
-  bubble(i = this.value.length - 1) {
+  bubble(i = this.values.length - 1) {
     var parent;
     var sorted = false;
     while (!sorted && i > 0) {
       parent = Math.floor((i - 1) / 2);
-      if (this.value[parent].priority > this.value[i].priority) {
+      if (this.values[parent].priority > this.values[i].priority) {
         this.swap(parent, i);
         i = parent;
       } else {
         sorted = true;
       }
     }
-    return this.value;
+    return this.values;
   }
   dequeue() {
-    var maxPriority = this.value[0];
-    if (this.value.length < 2) {
-      return this.value.pop();
+    var minPriority = this.values[0];
+    if (this.values.length < 2) {
+      return this.values.pop();
     }
-    this.value[0] = this.value.pop();
+    this.values[0] = this.values.pop();
     this.sink(0);
-    return maxPriority;
+    return minPriority;
   }
   sink(i = 0) {
     var child1;
     var child2;
-    var length = this.value.length;
+    var length = this.values.length;
     while (i < length) {
       child1 = 2 * i + 1;
       child2 = 2 * i + 2;
       if (
         (child1 >= length ||
-          this.value[child1].priority > this.value[i].priority) &&
+          this.values[child1].priority > this.values[i].priority) &&
         (child2 >= length ||
-          this.value[child2].priority > this.value[i].priority)
+          this.values[child2].priority > this.values[i].priority)
       ) {
         return;
       }
 
       if (
         child2 >= length ||
-        this.value[child1].priority < this.value[child2].priority
+        this.values[child1].priority < this.values[child2].priority
       ) {
         this.swap(i, child1);
         i = child1;
@@ -71,9 +71,9 @@ class PriorityQueue {
     }
   }
   swap(a, b) {
-    var temp = this.value[a];
-    this.value[a] = this.value[b];
-    this.value[b] = temp;
+    var temp = this.values[a];
+    this.values[a] = this.values[b];
+    this.values[b] = temp;
   }
 }
 

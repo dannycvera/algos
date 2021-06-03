@@ -8,59 +8,59 @@
 
 class MaxBinaryHeap {
   constructor() {
-    this.value = [];
+    this.values = [];
   }
   insert(val) {
-    this.value.push(val);
+    this.values.push(val);
     return this.bubble();
-    // return this.value;
+    // return this.values;
   }
-  bubble(i = this.value.length - 1) {
+  bubble(i = this.values.length - 1) {
     var parent;
     // var temp;
     var sorted = false;
 
     while (!sorted) {
       parent = Math.floor((i - 1) / 2);
-      if (this.value[i] > this.value[parent]) {
+      if (this.values[i] > this.values[parent]) {
         this.swap(i, parent);
         i = parent;
       } else {
         sorted = true;
       }
     }
-    return this.value;
+    return this.values;
   }
   extractMax() {
-    var maxVal = this.value[0];
-    if (this.value.length < 2) {
-      return this.value.pop();
+    var maxVal = this.values[0];
+    if (this.values.length < 2) {
+      return this.values.pop();
     }
-    this.value[0] = this.value.pop();
+    this.values[0] = this.values.pop();
     this.sinkDown(0);
     return maxVal;
   }
   swap(a, b) {
-    var temp = this.value[a];
-    this.value[a] = this.value[b];
-    this.value[b] = temp;
+    var temp = this.values[a];
+    this.values[a] = this.values[b];
+    this.values[b] = temp;
   }
   sinkDown(index) {
     var sorted = false;
     var child1;
     var child2;
-    var endIndex = this.value.length - 1;
+    var endIndex = this.values.length - 1;
     while (!sorted) {
       child1 = 2 * index + 1;
       child2 = 2 * index + 2;
       if (
-        (this.value[child1] <= this.value[index] || child1 > endIndex) &&
-        (this.value[child2] <= this.value[index] || child2 > endIndex)
+        (this.values[child1] <= this.values[index] || child1 > endIndex) &&
+        (this.values[child2] <= this.values[index] || child2 > endIndex)
       ) {
         sorted = true;
         return;
       }
-      if (this.value[child1] >= this.value[child2] || child2 > endIndex) {
+      if (this.values[child1] >= this.values[child2] || child2 > endIndex) {
         this.swap(index, child1);
         index = child1;
       } else {
