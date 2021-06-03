@@ -1,7 +1,8 @@
 function binarySearch(arr, val) {
   // add whatever parameters you deem necessary - good luck!
-  let end = arr.length - 1; // must be one larger than the end of array since we are using Math.floor.
+
   let start = 0; //Middle or start will end at one less than end due to Math.floor
+  let end = arr.length - 1; // must be one larger than the end of array since we are using Math.floor.
   let middle;
   while (start <= end && arr[middle] !== val) {
     // checks if it has reached the end without finding the value
