@@ -18,7 +18,7 @@
 // of its subproblems
 
 // Memoization:
-// Storing the results of expensive function calls
+// Storing the results of expensive function calls (usually an array but can used an object)
 // and returning the cached results when the same inputs occur again
 
 // recursive memoization personal creation
@@ -31,6 +31,7 @@
 
 // recursive memoization
 function fib(n, sequence = [0, 1]) {
+  // array used for memoizaion
   if (sequence[n] !== undefined) {
     // console.log(n, sequence);
     return sequence[n];
@@ -42,7 +43,7 @@ function fib(n, sequence = [0, 1]) {
 
 // Tabulation:
 // Storing the results of a previous result
-// in a "table" (usually an array)
+// in a "table" (usually an array but can used an object)
 // Usually done using iteration
 // Better Space complexity can be achieved using tabulation
 
@@ -51,7 +52,7 @@ function fibTab(n) {
   if (n < 0) {
     return undefined;
   }
-  sequence = [0, 1];
+  sequence = [0, 1]; // array used for Tabulation
   let i = 2;
   while (!sequence[n]) {
     sequence[i] = sequence[i - 2] + sequence[i - 1];

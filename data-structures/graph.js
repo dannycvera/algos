@@ -135,31 +135,32 @@ class Graph {
     }
 
     //loop thru priority queue
-    let smallest;
+    let smallestQ;
     // while there is something to visit
     while (nodes.values.length) {
-      smallest = nodes.dequeue().val;
-      if (smallest === end) {
+      smallestQ = nodes.dequeue().val;
+      if (smallestQ === end) {
         // console.log(distances);
         // console.log(previous);
         // build path results array to return
-        while (smallest) {
-          results.push(smallest);
-          smallest = previous[smallest];
+        while (smallestQ) {
+          results.push(smallestQ);
+          smallestQ = previous[smallestQ];
         }
         return results.reverse();
       }
-      if (smallest || distances[smallest] !== Infinity) {
-        for (let neighbor in this.adjacencyList[smallest]) {
+      if (smallestQ || distances[smallestQ] !== Infinity) {
+        // dont think i need this. could be an "else"
+        for (let neighbor in this.adjacencyList[smallestQ]) {
           //find neighboring node
-          let weight = this.adjacencyList[smallest][neighbor];
+          let weight = this.adjacencyList[smallestQ][neighbor]; // getting weight/edge distance  from adjacency list
           // calculate new distance to neighboring node
-          let candidate = distances[smallest] + weight;
+          let candidate = distances[smallestQ] + weight;
           if (candidate < distances[neighbor]) {
-            // updating new smallest distance to neighbor
+            // updating new smallestQ distance to neighbor
             distances[neighbor] = candidate;
             // updating previous - how we got to next neighbor
-            previous[neighbor] = smallest;
+            previous[neighbor] = smallestQ;
             //enqueue in priority quueue with new priority
             nodes.enqueue(neighbor, candidate);
           }
