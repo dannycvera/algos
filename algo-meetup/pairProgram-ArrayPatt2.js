@@ -29,15 +29,14 @@ var insert = function (intervals, newInterval) {
   return results;
 };
 
-//    [2,5]
-//   1,3 3,6
-//     3,4
-//     1,8
-//
-//
-
-intervals = [[1, 5]];
-newInterval = [6, 8];
+intervals = [
+  [1, 2],
+  [3, 5],
+  [6, 7],
+  [8, 10],
+  [12, 16],
+];
+newInterval = [4, 8];
 console.log(insert(intervals, newInterval));
 
 var lengthOfLongestSubstring = function (s) {
