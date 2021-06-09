@@ -67,13 +67,13 @@ class BST {
   }
   BFS() {
     var q = [];
-    var data = [];
+    var results = [];
     var current = this.root;
     q.push(current);
 
     while (q.length) {
       current = q.shift();
-      data.push(current);
+      results.push(current);
       if (current.left) {
         q.push(current.left);
       }
@@ -81,7 +81,7 @@ class BST {
         q.push(current.right);
       }
     }
-    return data;
+    return results;
   }
   // iterative DFS - preorder
   DFSiterative() {
