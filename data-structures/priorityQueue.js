@@ -90,7 +90,7 @@ priQue.enqueue("Hang Nail", 9);
 priQue.enqueue("runny nose", 5);
 priQue.enqueue("ear ache", 6);
 priQue.enqueue("scratch on hand", 9);
-console.log(priQue);
+console.log(priQue.values);
 priQue.dequeue();
 priQue.dequeue();
 priQue.dequeue();
