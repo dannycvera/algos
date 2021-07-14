@@ -29,3 +29,16 @@ function miniimumStepsToOne(n, mem = {}) {
   return 1 + steps;
 }
 console.log(miniimumStepsToOne(54));
+
+function miniimumStepsToOneTab(n) {
+  // tabulation// build an array using a loop,
+  // storing the correct answers in each element of the array
+
+  //let result = minimumStepsT
+
+  // init tab
+  let tab = newArray(n + 1);
+
+  //apply to base case to tab
+  tab[1] = 0;
+}
