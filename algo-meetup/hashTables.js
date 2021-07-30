@@ -8,9 +8,10 @@ class HashTable {
     let index = hash(key, this.size);
     if (!this.array[index]) {
       this.array[index] = {};
-    } else if (this.array[index][key]) {
-      return "key is already set with a value";
     }
+    // else if (this.array[index][key]) {
+    //   return "key is already set with a value";
+    // }
     let bucket = this.array[index];
     bucket[key] = val;
   }
