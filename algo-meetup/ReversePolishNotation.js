@@ -36,23 +36,18 @@ var evalRPN = function (tokens) {
   const set = new Set(["+", "-", "*", "/"]);
   let value1 = 0;
   let value2 = 0;
-
   const operators = (o) => {
     value1 = stack.pop();
     value2 = stack.pop();
     switch (o) {
       case "+":
         return value2 + value1;
-        break;
       case "-":
         return value2 - value1;
-        break;
       case "*":
         return value2 * value1;
-        break;
       case "/":
         return parseInt(value2 / value1);
-        break;
     }
   };
 
