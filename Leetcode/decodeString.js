@@ -1,6 +1,6 @@
 var decodeString = function (s) {
-  const stringStack = [];
-  const countStack = [];
+  const stringStack = new Stack();
+  const countStack = new Stack();
   let decodedString = "";
   let currentString = "";
   let n = "";
@@ -13,8 +13,9 @@ var decodeString = function (s) {
       stringStack.push(currentString);
       currentString = "";
     } else if (s[i] === "]") {
-      decodedString = stringStack.pop();
-      currentString = currentString.repeat(countStack.pop());
+      decodedString = stringStack.pop().value;
+      console.log(decodeString);
+      currentString = currentString.repeat(countStack.pop().value);
       decodedString = decodedString.concat(currentString);
       currentString = decodedString;
     } else {
@@ -23,6 +24,52 @@ var decodeString = function (s) {
   }
   return currentString;
 };
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+  push(value) {
+    const node = new Node(value);
+    node.next = this.head;
+    this.head = node;
+    this.size++;
+    return this.size;
+  } // add to head
+
+  pop() {
+    const result = this.head;
+    if (result) {
+      this.head = result.next;
+      result.next = null;
+      this.size--;
+    }
+    return result;
+  } // remove from head
+  peek() {
+    if (this.head) {
+      return this.head.value;
+    }
+    return null;
+  } // return value of the head
+  isEmpty() {
+    if (this.head) {
+      return false;
+    }
+    return true;
+  }
+  getSize() {
+    return this.size;
+  }
+}
 
 let str = "3[a]2[bc]";
 console.log(decodeString(str));

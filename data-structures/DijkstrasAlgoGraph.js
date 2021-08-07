@@ -10,7 +10,7 @@
 
 class Graph {
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}; // {vertex1:{vertex2: weight, vertex3: weight2}, vertex2:{vertex1: weight}}
   }
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) {
@@ -25,6 +25,7 @@ class Graph {
       this.adjacencyList[vertex2] &&
       vertex1 !== vertex2
     ) {
+      // {vertex1:{vertex2: weight}, vertex2:{vertex1: weight}}
       this.adjacencyList[vertex1][vertex2] = weight;
       this.adjacencyList[vertex2][vertex1] = weight;
     }
