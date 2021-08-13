@@ -36,7 +36,7 @@ function anagram(word1, word2) {
   if (word1.length !== word2.length) {
     return false;
   }
-  const hash1 = {}; //{ "a": 2, "t":1}
+  const hash1 = {}; //{ "a": 2, "t": 1}
   const hash2 = {};
   let current;
 
@@ -56,6 +56,7 @@ function anagram(word1, word2) {
       hash2[current] = 1;
     }
   }
+
   // compare frequencies of each word by comparing the number values in each hash map
   const hash2Keys = Object.keys(hash2);
   for (let i = 0; i < hash2Keys.length; i++) {

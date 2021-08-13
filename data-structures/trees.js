@@ -17,8 +17,8 @@ class BST {
       return this;
     }
     var current = this.root;
-    var placed = false;
-    while (!placed) {
+    // var placed = false;
+    while (true) {
       if (val === current.val) {
         return undefined;
       }
@@ -27,18 +27,18 @@ class BST {
           current = current.left;
         } else {
           current.left = newNode;
-          placed = true;
+          return this;
         }
       } else {
         if (current.right) {
           current = current.right;
         } else {
           current.right = newNode;
-          placed = true;
+          return this;
         }
       }
     }
-    return this;
+    // return this;
   }
   find(val) {
     if (!this.root) {
