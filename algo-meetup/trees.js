@@ -24,6 +24,41 @@ class BinarySearchTree {
     }
     return null;
   }
-  insert(val) {}
+  insert(val) {
+    var newNode = new TreeNode(val);
+    if (!root) {
+      root = newNode;
+      return root;
+    }
+    var current = root;
+    while (true) {
+      if (val === current.val) {
+        return undefined;
+      }
+      if (current.val > val) {
+        if (current.left) {
+          current = current.left;
+        } else {
+          current.left = newNode;
+          return root;
+        }
+      } else {
+        if (current.right) {
+          current = current.right;
+        } else {
+          current.right = newNode;
+          return root;
+        }
+      }
+    }
+  }
   remove(val) {}
+  bfs() {}
+
+  dfspo(node = this.root, result = []) {
+    if (node === null) return;
+    result.push(node.val);
+    dfspo(node.left, result);
+    dfspo(node.right, result);
+  }
 }

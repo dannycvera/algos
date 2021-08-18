@@ -102,14 +102,18 @@ class BST {
     return data;
   }
   // DFS - PreOrder recursively
+  //  Preorder (Root, Left, Right) : 1 2 4 5 3
   DFSPreOrder(start = this.root) {
     var data = [];
     // var current = this.root;
     function traverse(node) {
+      // store the root value first
       data.push(node);
+      // store the left value second along with the recursive tree below it
       if (node.left) {
         traverse(node.left);
       }
+      // store the right value third along with the recursive tree below it
       if (node.right) {
         traverse(node.right);
       }
@@ -117,28 +121,35 @@ class BST {
     }
     return traverse(start);
   }
+  // Postorder (Left, Right, Root) : 4 5 2 3 1
   DFSPostOrder(start = this.root) {
     var data = [];
     function traverse(node) {
+      // store the left value first along with the recursive tree below it
       if (node.left) {
         traverse(node.left);
       }
+      // store the right value second along with the recursive tree below it
       if (node.right) {
         traverse(node.right);
       }
+      // store the root value last.
       data.push(node);
       return data;
     }
     return traverse(start);
   }
-
+  // Inorder (Left, Root, Right) : 4 2 5 1 3
   DFSInOrder(start = this.root) {
     var data = [];
     function traverse(node) {
+      // store the left value first along with the recursive tree below it
       if (node.left) {
         traverse(node.left);
       }
+      // store the root node second
       data.push(node);
+      // store the right value third along with the recursive tree below it
       if (node.right) {
         traverse(node.right);
       }
