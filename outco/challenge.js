@@ -12,27 +12,19 @@ function minStepsToOne(num) {
     current = q.shift();
     if (current === null) {
       // null signifies the last result on a level was reached
-      q.push(null);
-      // once the last parent was extracted from the queue,
-      // you can expect the last child was added in the previous iteration.
-      steps++;
+      q.push(null); // once the last parent was extracted from the queue,
+      steps++; // you can expect the last child was added in the previous iteration.
+    } else if (current % 3 === 0) {
+      // there will only two possible results.
+      // Either dividing by 2 or 3
+      q.push(current / 3);
+    } else if (current % 2 === 0) {
+      q.push(current / 2);
     } else if (current === 1) {
-      // once one is reached. Return steps
-      return steps;
-    } else {
-      // there will only two possible results from the current number
-      // Either dividing by 2 or 3 and subtracting 1
-
-      // push either the result of dividing 2 or 3 into the queue
-      if (current % 3 === 0) {
-        q.push(current / 3);
-      } else if (current % 2 === 0) {
-        q.push(current / 2);
-      }
-      // and push the result of subtracting 1
-      q.push(current - 1);
+      return steps; // once one is reached. Return steps and stop checking for solutions.
     }
+    q.push(current - 1); //or  subtracting 1
   }
 }
 
-console.log(minStepsToOne(10000000));
+console.log(minStepsToOne(10));
