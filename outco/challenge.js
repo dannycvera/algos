@@ -1,5 +1,5 @@
 function minStepsToOne(num) {
-  // BST search for minimum steps to num
+  // BFS search for minimum steps to num
 
   // edge case if 1 is passed as num.
   if (num === 1) {
