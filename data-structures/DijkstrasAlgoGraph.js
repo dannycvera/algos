@@ -181,10 +181,10 @@ class Graph {
 //     this.sort();
 //   }
 //   dequeue() {
-//     return this.values.shift();
+//     return this.values.pop();
 //   }
 //   sort() {
-//     this.values.sort((a, b) => a.priority - b.priority);
+//     this.values.sort((a, b) => b.priority - a.priority);
 //   }
 // }
 

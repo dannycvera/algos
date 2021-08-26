@@ -16,15 +16,15 @@ function minStepsToOne(num) {
       steps++; // you can expect the last child was added in the previous iteration.
     } else if (current % 3 === 0) {
       // there will only two possible results.
-      // Either dividing by 2 or 3
+      // Either dividing by 2 or 3 or by subtracting 1
       q.push(current / 3);
     } else if (current % 2 === 0) {
       q.push(current / 2);
     } else if (current === 1) {
       return steps; // once one is reached. Return steps and stop checking for solutions.
     }
-    q.push(current - 1); //or  subtracting 1
+    q.push(current - 1);
   }
 }
 
-console.log(minStepsToOne(10));
+console.log(minStepsToOne(10000000));
