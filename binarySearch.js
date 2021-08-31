@@ -7,7 +7,7 @@ function binarySearch(arr, val) {
   while (start <= end && arr[middle] !== val) {
     // checks if it has reached the end without finding the value
     middle = Math.floor((start + end) / 2); // finds the middle point between start and end index
-    console.log("middle", middle, "start", start, "end", end, arr[middle]);
+    // console.log("middle", middle, "start", start, "end", end, arr[middle]);
     if (arr[middle] < val) {
       // shrinks the search area by the end half
       start = middle + 1;

@@ -309,3 +309,8 @@ graph.addEdge("e", "f", 1);
 
 graph.path("a", "e");
 graph.dfsIterative("a");
+
+// const adjacencyList = {
+//   a: { b: true, c: true },
+//   b: { a: true, d: true }
+// }

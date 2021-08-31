@@ -1,23 +1,5 @@
 let arr = [
-  13,
-  99,
-  16,
-  20,
-  12,
-  44,
-  8,
-  -13,
-  1,
-  11,
-  98,
-  4,
-  5,
-  9,
-  15,
-  2,
-  17,
-  18,
-  -6,
+  13, 99, 16, 20, 12, 44, 8, -13, 1, 11, 98, 4, 5, 9, 15, 2, 17, 18, -6,
 ];
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
@@ -28,7 +10,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
   // and right of the pivot if they are of a higher value
   // then array will eventually be fully sorted
   if (left >= right) {
-    return;
+    return arr;
   }
   // pivot is is considered sorted since it is a single value and left as is
   // everything to the right is higher than the pivot
