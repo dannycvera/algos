@@ -1,6 +1,6 @@
 class AdjacencyList {
   constructor() {
-    this.list = {}; // { v1: [], v2:[]}
+    this.list = {}; // { v1: [v3, v2, v5], v2:[]} // graph.list[vertex]
   }
   addVertex(v) {
     if (!this.hasOwnProperty(v)) {

@@ -8,7 +8,7 @@ let arr = [6, 4, 8, 2, 9, 1, 3];
 function bubbleSort(arr) {
   let temp;
   let noSwaps; // stores a boolean whether a swap occured
-  for (let i = arr.length - 1; i >= 0; i--) {
+  for (let i = arr.length - 1; i > 0; i--) {
     // starts at the end, bringing larger values to the top.
     noSwaps = true; // resets noSwaps to true
     for (let j = 0; j < i; j++) {
@@ -25,8 +25,7 @@ function bubbleSort(arr) {
       break;
     }
   }
-  console.log(arr);
   return arr;
 }
 
-bubbleSort([1, 3, 2, 4, 8, 9]);
+console.log(bubbleSort(arr));
