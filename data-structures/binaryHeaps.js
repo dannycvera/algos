@@ -3,7 +3,7 @@
 //MinBinaryHeap: the parent is always smaller than the children
 //the children across nodes have no relation to size
 //array representations of heaps
-//parrent -> child : if the  index of the parrent is i, the child is at 2 * i + 1, and the second child is at 2 * i + 2
+// parrent -> child : if the  index of the parrent is i, the child is at 2 * i + 1, and the second child is at 2 * i + 2
 // child -> parrent: parent is located at Math.floor((i - 1)/2) of the index of the child
 
 class MaxBinaryHeap {
